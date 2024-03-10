@@ -8,7 +8,7 @@
 //     // put your code here
 // };
 
-const countOccurrences = (text = '', subText) => {
+export const countOccurrences = (text = '', subText) => {
     if (subText === '') return null;
     let accResult = 0;
     let startPosition = 0;
@@ -22,8 +22,6 @@ const countOccurrences = (text = '', subText) => {
         if (isFind === -1) break;
         accResult++;
         startPosition = subText.length + isFind;
-
-
     }
     console.log('accResult ' + accResult);
     return accResult;
