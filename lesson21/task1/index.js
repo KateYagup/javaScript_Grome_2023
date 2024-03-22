@@ -1,6 +1,6 @@
 export const getTitleElement = () => {
     const titleElem = document.querySelector('.title');
-    console.log(titleElem);
+    console.dir(titleElem);
     return titleElem;
 }
 
@@ -8,7 +8,7 @@ export const getInputElement = () => {
     // const inputElem = document.getElementsByTagName('input')[0].value;
     // const inputElem = document.getElementsByTagName('input')[0]
     const inputElem = document.querySelector('input');
-    console.log(inputElem);
+    console.dir(inputElem);
     return inputElem;
 }
 
