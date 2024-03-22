@@ -11,5 +11,6 @@ export const getItemsArray = () => {
     return elementsArray;
 }
 
+
 // getItemsList();
 // getItemsArray();
