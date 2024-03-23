@@ -1,9 +1,6 @@
-export const setButton = (buttonText) => {
-    let parent = document.querySelector('body');
-    const button = document.createElement('button');
-    button.innerHTML = buttonText;
-    parent.append(button);
+export const setTitle = (text) => {
+    const elem = document.querySelector('.title');
+    elem.textContent = text;
 }
 
-
-setButton('button text');
+// setTitle('Привет, Андрей!');
