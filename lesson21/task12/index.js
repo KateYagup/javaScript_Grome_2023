@@ -3,7 +3,7 @@ export const getSection = (num) => {
 
     // console.dir(elem);
     // console.log(elem.dataset.number);
-    elemParent = elem.closest('.box');
+    const elemParent = elem.closest('.box');
     // console.log(elemParent);
     // console.log(elemParent.dataset.section);
     return elemParent.dataset.section;
