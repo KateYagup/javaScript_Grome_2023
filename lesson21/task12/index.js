@@ -6,7 +6,7 @@ export const getSection = (num) => {
     elemParent = elem.closest('.box');
     // console.log(elemParent);
     // console.log(elemParent.dataset.section);
-    // return elemParent.dataset.section;
+    return elemParent.dataset.section;
 }
 
-getSection(5);
+// getSection(5);
