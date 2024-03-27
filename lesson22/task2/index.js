@@ -1,4 +1,4 @@
 const inputElem = document.querySelector('.text-input');
-inputElem.addEventListener('keyup', () => {
+inputElem.addEventListener('change', () => {
     console.log(inputElem.value);
 });
