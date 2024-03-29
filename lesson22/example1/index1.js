@@ -10,6 +10,17 @@ const logEvent = (text, color) => {
     eventsListElem.appendChild(spanElem);
 };
 
+// const print = () => {
+//     console.log('!!!');
+// }
+// console.log('!!!');
+// print();
+// const p1 = print();
+// p1();
+
+// const logGreenDiv1 = logEvent('div', 'green');
+// logGreenDiv1;
+// logEvent('div', 'green');
 const logGreenDiv = logEvent.bind(null, 'div', 'green');
 const logGreyDiv = logEvent.bind(null, 'div', 'grey');
 
