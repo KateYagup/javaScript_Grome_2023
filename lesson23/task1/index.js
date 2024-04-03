@@ -10,6 +10,17 @@ for (let task of tasks) {
     task.id = Math.floor(Math.random() * 1000).toString();
 }
 
+const setCrossLine = (event) => {
+    const idClick = event.target.dataset.id;
+    for (let task of tasks) {
+        if (task.id == idClick) {
+            task.done = !task.done;
+        }
+    }
+    console.log(idClick);
+    renderTasks(tasks);
+}
+
 const listElem = document.querySelector('.list');
 
 const renderTasks = tasksList => {
@@ -24,6 +35,7 @@ const renderTasks = tasksList => {
             checkbox.checked = done;
             checkbox.classList.add('list__item-checkbox');
             checkbox.dataset.id = id;
+            checkbox.addEventListener('change', setCrossLine);
             if (done) {
                 listItemElem.classList.add('list__item_done');
             }
@@ -40,15 +52,7 @@ renderTasks(tasks);
 const button = document.querySelector('.create-task-btn');
 const input = document.querySelector('.task-input');
 
-// const removeLiElements = () => {
-//     const liElems = document.querySelectorAll('li');
-//     for (let el of liElems) {
-//         el.remove();
-//     }
-// }
-
 const onButtonClick = () => {
-    // removeLiElements();
     if (input.value) {
         tasks.push({
             text: input.value, done: false, id: Math.floor(Math.random() * 1000).toString()
@@ -61,21 +65,11 @@ const onButtonClick = () => {
 button.addEventListener('click', onButtonClick);
 const checkElements = document.querySelectorAll('.list__item-checkbox');
 
-const setCrossLine = (event) => {
-    // removeLiElements();
-    const idClick = event.target.dataset.id;
-    for (let task of tasks) {
-        if (task.id == idClick) {
-            task.done = !task.done;
-        }
-    }
 
-    renderTasks(tasks);
-}
 
-for (let elem of checkElements) {
-    elem.addEventListener('change', (event) => setCrossLine(event));
-}
+// for (let elem of checkElements) {
+//     elem.addEventListener('change', () => setCrossLine(event));
+// }
 
 
 // put your code here
