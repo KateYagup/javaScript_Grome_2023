@@ -13,6 +13,7 @@ for (let task of tasks) {
 const listElem = document.querySelector('.list');
 
 const renderTasks = tasksList => {
+    listElem.innerHTML = '';
     const tasksElems = tasksList
         .sort((a, b) => a.done - b.done)
         .map(({ text, done, id }) => {
@@ -39,18 +40,18 @@ renderTasks(tasks);
 const button = document.querySelector('.create-task-btn');
 const input = document.querySelector('.task-input');
 
-const removeLiElements = () => {
-    const liElems = document.querySelectorAll('li');
-    for (let el of liElems) {
-        el.remove();
-    }
-}
+// const removeLiElements = () => {
+//     const liElems = document.querySelectorAll('li');
+//     for (let el of liElems) {
+//         el.remove();
+//     }
+// }
 
 const onButtonClick = () => {
-    removeLiElements();
+    // removeLiElements();
     if (input.value) {
         tasks.push({
-            text: input.value, done: false
+            text: input.value, done: false, id: Math.floor(Math.random() * 1000).toString()
         });
 
         renderTasks(tasks);
@@ -61,12 +62,11 @@ button.addEventListener('click', onButtonClick);
 const checkElements = document.querySelectorAll('.list__item-checkbox');
 
 const setCrossLine = (event) => {
-    removeLiElements();
+    // removeLiElements();
     const idClick = event.target.dataset.id;
     for (let task of tasks) {
         if (task.id == idClick) {
-            if (!task.done) task.done = true;
-            if (task.done) task.done = false;
+            task.done = !task.done;
         }
     }
 
@@ -74,7 +74,7 @@ const setCrossLine = (event) => {
 }
 
 for (let elem of checkElements) {
-    elem.addEventListener('click', (event) => setCrossLine(event));
+    elem.addEventListener('change', (event) => setCrossLine(event));
 }
 
 
