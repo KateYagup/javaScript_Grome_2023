@@ -23,8 +23,14 @@ const onCounterChange = e => {
 
 counterElem.addEventListener('click', onCounterChange);
 
-const onCounterChange = e => {
-
+const onStorageChange = e => {
+    console.log(e);
+    counterValueElem.textContent = e.newValue;
 };
 
 window.addEventListener('storage', onStorageChange);
+
+const onDocumentLoaded = () => {
+    counterValueElem.textContent = localStorage.getItem('counterValue') || 0;
+}
+document.addEventListener('DOMContentLoaded', onDocumentLoaded); 
