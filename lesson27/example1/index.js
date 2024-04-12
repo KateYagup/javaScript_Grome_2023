@@ -6,7 +6,7 @@ localStorage.setItem('name', JSON.stringify('Tom'));
 localStorage.setItem('age', JSON.stringify(17));
 
 export const getLocalStorageData = () => {
-    Object.entries(localStorage)
+    return Object.entries(localStorage)
         .reduce((acc, [key, value]) => {
             let newValue;
             try {
