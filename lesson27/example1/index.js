@@ -17,7 +17,7 @@ export const getLocalStorageData = () => {
 
             return {
                 ...acc, // возвращаем значения, которые уже есть в аккумуляторе
-                [key]: newValue // добавляем новый ключ
+                [key]: newValue, // добавляем новый ключ
             };
         }, {})
 }
