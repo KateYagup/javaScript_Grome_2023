@@ -14,6 +14,8 @@ const renderTasks = tasksList => {
         .slice()
         .sort((a, b) => a.done - b.done)
         .map(({ text, done, id }) => {
+            debugger;
+            // console.log(text, done);
             const listItemElem = document.createElement('li');
             listItemElem.classList.add('list__item');
             const checkbox = document.createElement('input');
