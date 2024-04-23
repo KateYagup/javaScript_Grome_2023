@@ -23,6 +23,6 @@ export const onToggleTask = e => {
             return task;
         });
 
-    setItem('tasksList', newTaskList);
+    setItem('tasksList', newTasksList);
     renderTasks();
 };
