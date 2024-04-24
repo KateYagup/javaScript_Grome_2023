@@ -35,6 +35,8 @@ export const renderTasks = () => {
     const tasksElems = tasksList
         .sort(compareTasks)
         .map(createListItem);
+
+    listElem.append(...tasksElems);
 }
 
 // export const renderTasks = () => {
