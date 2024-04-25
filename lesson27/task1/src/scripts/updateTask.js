@@ -24,5 +24,6 @@ export const onToggleTask = e => {
         });
 
     setItem('tasksList', newTasksList);
+
     renderTasks();
 };

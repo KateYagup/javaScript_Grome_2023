@@ -9,4 +9,10 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+const onStarageChange = e => {
+    if (e.key === 'tasksList') {
+        renderTasks();
+    }
+}
 
+window.addEventListener('storage', onStarageChange);

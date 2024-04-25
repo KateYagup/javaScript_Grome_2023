@@ -1,8 +1,10 @@
-import { tasks } from './storage.js';
+// import { tasks } from './storage.js';
+import { getItem } from "./storage.js";
 
 const listElem = document.querySelector('.list');
 
-export const renderTasks = tasksList => {
+export const renderTasks = () => {
+    const tasksList = getItem('tasksList') || [];
     listElem.innerHTML = '';
     const tasksElems = tasksList
         .slice()

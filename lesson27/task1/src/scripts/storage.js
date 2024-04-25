@@ -13,10 +13,10 @@ export const setItem = (key, value) => {
 
 export const getItem = key => JSON.parse(localStorage.getItem(key));
 
-const onStarageChange = e => {
-    if (e.key === 'tasksList') {
-        renderTasks();
-    }
-}
+// const onStarageChange = e => {
+//     if (e.key === 'tasksList') {
+//         renderTasks();
+//     }
+// }
 
-window.addEventListener('storage', onStarageChange);
+// window.addEventListener('storage', onStarageChange);
