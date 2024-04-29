@@ -1,7 +1,7 @@
 let dt = new Date(2020, 0, 7, 17, 17, 17);
 console.log(dt);
 
-const shmomemt = initValue => {
+export const shmomemt = initValue => {
     let result = initValue;
     const calculator = {
         add(type, value) {
