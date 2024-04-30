@@ -18,7 +18,7 @@ export const shmoment = initValue => {
                 case 'months':
                     let months = newDate.getMonth();
                     // console.log(months);
-                    months += value - 1;
+                    months += value;
                     newDate.setMonth(months);
                     break;
                 case 'days':
