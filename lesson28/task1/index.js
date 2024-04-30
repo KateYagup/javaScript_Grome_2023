@@ -1,10 +1,11 @@
 let dtFirst = new Date(2020, 0, 7, 17, 17, 17);
 console.log(dtFirst);
-let dt = new Date(dtFirst);
+// let dt = new Date(dtFirst);
 
 
 export const shmoment = initValue => {
     let result = new Date(initValue);
+    let dt = new Date(initValue);
     const calculator = {
         add(type, value) {
             let newDate = dt;
