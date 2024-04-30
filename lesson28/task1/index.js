@@ -1,8 +1,10 @@
-let dt = new Date(2020, 0, 7, 17, 17, 17);
-console.log(dt);
+let dtFirst = new Date(2020, 0, 7, 17, 17, 17);
+console.log(dtFirst);
+let dt = new Date(dtFirst);
+
 
 export const shmoment = initValue => {
-    let result = initValue;
+    let result = new Date(initValue);
     const calculator = {
         add(type, value) {
             let newDate = dt;
@@ -110,3 +112,4 @@ export const shmoment = initValue => {
 
 const result = shmoment(dt).add('days', 10).subtract('years', 10).result();
 console.log(result);
+console.log(dtFirst);
