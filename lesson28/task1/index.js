@@ -1,7 +1,7 @@
 let dt = new Date(2020, 0, 7, 17, 17, 17);
 console.log(dt);
 
-export const shmomemt = initValue => {
+export const shmoment = initValue => {
     let result = initValue;
     const calculator = {
         add(type, value) {
@@ -108,5 +108,5 @@ export const shmomemt = initValue => {
     return calculator;
 };
 
-const result = shmomemt(dt).add('days', 10).subtract('years', 10).result();
+const result = shmoment(dt).add('days', 10).subtract('years', 10).result();
 console.log(result);
