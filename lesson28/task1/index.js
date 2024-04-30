@@ -72,32 +72,31 @@ export const shmoment = initValue => {
                     break;
                 case 'days':
                     let days = newDate.getHours();
-                    console.log('days');
-                    console.log(days);
+                    // console.log('days');
+                    // console.log(days);
                     days -= value * 24;
-                    console.log(value);
+                    // console.log(value);
                     newDate.setHours(days);
-
                     break;
                 case 'hours':
                     let hours = newDate.getHours();
-                    value -= hours;
-                    newDate.setHours(value);
+                    hours -= value;
+                    newDate.setHours(hours);
                     break;
                 case 'minutes':
                     let minutes = newDate.getMinutes();
-                    value -= minutes;
-                    newDate.setMinutes(value);
+                    minutes -= value;
+                    newDate.setMinutes(minutes);
                     break;
                 case 'seconds':
                     let seconds = newDate.getSeconds();
-                    value -= seconds;
-                    newDate.setSeconds(value);
+                    seconds -= value;
+                    newDate.setSeconds(seconds);
                     break;
                 case 'milliseconds':
                     let milliseconds = newDate.getSeconds();
-                    value -= milliseconds;
-                    newDate.setMilliseconds(value);
+                    milliseconds -= value;
+                    newDate.setMilliseconds(milliseconds);
                     break;
             }
             result = newDate;
@@ -110,6 +109,6 @@ export const shmoment = initValue => {
     return calculator;
 };
 
-const result = shmoment(dt).add('days', 10).subtract('years', 10).result();
+const result = shmoment(dt).subtract('hours', 2).subtract('minutes', 10).result();
 console.log(result);
 console.log(dtFirst);
