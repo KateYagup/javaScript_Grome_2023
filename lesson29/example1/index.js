@@ -20,7 +20,7 @@ export const addImage = (imgSrc, callback) => {
 
 const imgSrc = 'https://p.bigstockphoto.com/GeFvQkBbSLaMdpKXF1Zv_bigstock-Aerial-View-Of-Blue-Lakes-And--227291596.jpg';
 
-const onImageLoaded = (error, imgElem) => {
+export const onImageLoaded = (error, imgElem) => {
     if (error) {
         console.log(error);
         return;
