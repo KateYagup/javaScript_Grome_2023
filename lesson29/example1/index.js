@@ -15,7 +15,7 @@ export const addImage = (imgSrc, callback) => {
     imgElem.addEventListener('error', () => callback('Image load failed'));
     const { width, height } = imgElem;
 
-    return { width, height };
+    // return { width, height };
 };
 
 const imgSrc = 'https://p.bigstockphoto.com/GeFvQkBbSLaMdpKXF1Zv_bigstock-Aerial-View-Of-Blue-Lakes-And--227291596.jpg';
@@ -31,7 +31,7 @@ export const onImageLoaded = (error, imgElem) => {
     sizeElem.textContent = `${width} x ${height}`;
 
 }
-addImage(imgSrc, onImageLoaded);
+// addImage(imgSrc, onImageLoaded);
 
 // callack function
 // const onImageLoaded = (error, imgElem) => {
