@@ -1,9 +1,9 @@
-export const delay = (delay, callback, context, aeg1, arg2, arg3) => {
-    setTimeout(callback, delay);
+export const delay = (delay, callback, arg1) => {
+    setTimeout(() => callback(arg1), delay);
 }
 
-// const print = () => {
-//     console.log(5);
+// const print = (arg1) => {
+//     console.log(arg1);
 // };
 
-// delay(10000, print);
+// delay(1000, print, 7);
