@@ -5,9 +5,9 @@
  * Ответьте себе на вопрос, какой тип данных имеет переменная successPromise
  */
 
-const successPromise = new Promise(resolve => {
+const successPromise = new Promise((resolve, reject) => {
     resolve(67);
-    reject('I am an error');
+    reject(new Error('I am an error'));
 });
 
 /*
