@@ -1,10 +1,14 @@
 import { addImage } from './addImage.js';
-const addImageV2 = url => {
+
+export const addImageV2 = url => {
 
     const p = new Promise((resolve, reject) => {
-        const onSucess = (error, imgElem) => {
-            resolve(data);
-            reject(error);
+        const onSucess = (error, data) => {
+            if (error) {
+                reject(error);
+            } else {
+                resolve(data);
+            }
         }
 
         addImage(url, onSucess);
