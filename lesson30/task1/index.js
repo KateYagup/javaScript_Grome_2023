@@ -1,6 +1,6 @@
 import { addImage } from './addImage.js';
 
-export const addImageV2 = url => {
+const addImageV2 = url => {
 
     const p = new Promise((resolve, reject) => {
         const onSucess = (error, data) => {
@@ -10,9 +10,9 @@ export const addImageV2 = url => {
                 resolve(data);
             }
         }
-
         addImage(url, onSucess);
     });
+    return p;
 };
 
 // examples
