@@ -7,7 +7,6 @@
 // export const requestUserData = userId => {
 //     // put your code here
 // };
-
 export const requestUserData = userId => {
     const request = new Promise((resolve, reject) => {
         if (userId === 'broken') {
@@ -19,7 +18,7 @@ export const requestUserData = userId => {
                 resolve({
                     name: 'John',
                     age: 17,
-                    email: `${userId}`,
+                    email: 'userid777@example.com',
                     userId
                 });
             }, 1000);
