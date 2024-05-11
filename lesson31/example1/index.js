@@ -29,10 +29,10 @@ export const requestUserData = userId => {
     return request;
 };
 
-requestUserData('userid777')
-    .catch(error => console.log(error));
-// .then(data => console.log(data));
+// requestUserData('userid777')
+//     .catch(error => console.log(error));
+// // .then(data => console.log(data));
 
 
-requestUserData('broken-1')
-    .then(data => console.log(data)); 
+// requestUserData('broken-1')
+//     .then(data => console.log(data)); 
