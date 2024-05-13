@@ -12,10 +12,10 @@ const asyncNum3 = getValueWithDelay(10, 500);
 const getSum = numbers =>
     numbers.reduce((acc, num) => acc + num, 0);
 
-const asyncSum = (...asyncNumbers) => {
+export const asyncSum = (...asyncNumbers) => {
     return Promise.all(asyncNumbers)
         .then(numbers => getSum(numbers));
 };
 
-asyncSum(asyncNum1, asyncNum2, asyncNum3)
-    .then(result => console.log(result));
+// asyncSum(asyncNum1, asyncNum2, asyncNum3)
+//     .then(result => console.log(result));
