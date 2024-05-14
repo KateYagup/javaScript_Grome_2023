@@ -6,16 +6,19 @@ const getValueWithDelay = (value, delay) => new Promise(resolve => {
 });
 
 const asyncNum1 = getValueWithDelay(56, 2000);
-const asyncNum2 = getValueWithDelay(4, 1000);
+const asyncNum2 = getValueWithDelay(undefined, 1000);
 const asyncNum3 = getValueWithDelay(10, 500);
 
 const getSum = numbers =>
-    numbers.reduce((acc, num) => acc + num, 0);
+    numbers
+        .filter(value => !isNaN(value))
+        .reduce((acc, num) => acc + Number(num), 0);
 
-export const asyncSum = (...asyncNumbers) => {
+const asyncSum = (...asyncNumbers) => {
     return Promise.all(asyncNumbers)
-        .then(numbers => getSum(numbers));
+        .then(numbers => getSum(numbers))
+        .catch(() => Promise.reject(new Error('Can\'t calculate')));
 };
 
-// asyncSum(asyncNum1, asyncNum2, asyncNum3)
-//     .then(result => console.log(result));
+asyncSum(asyncNum1, Promise.reject(new Error('err')), asyncNum3)
+    .then(result => console.log(result));
