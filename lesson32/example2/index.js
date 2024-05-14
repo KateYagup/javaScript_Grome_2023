@@ -7,7 +7,7 @@ const request = url => new Promise(resolve => {
         resolve({
             userData: {
                 name: 'Tom',
-                age: '17',
+                age: 17,
             },
             source: url
         })
