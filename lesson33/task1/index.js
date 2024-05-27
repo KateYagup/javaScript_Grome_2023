@@ -16,6 +16,9 @@ const renderUserData = userData => {
     console.log('from function');
     console.log(userData);
     console.log(userData[0]);
+    const { commit, author } = userData;
+    console.log(commit);
+    console.log(author);
     // const { sha, node_id, commit, author } = userData;
     // console.log(sha);
     // console.log(node_id);
