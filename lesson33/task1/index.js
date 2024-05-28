@@ -16,14 +16,20 @@ const renderUserData = userData => {
     console.log('from function');
     console.log(userData);
     console.log(userData[0]);
-    const { commit, author } = userData;
+
+    userData.map(({
+        commit: {
+            author: { email, date, name },
+        },
+    }) => {
+        const email = commit.author.email;
+        const date = commit.author.date;
+        const name = commit.author.name;
+        return { email, date, name };
+    });
+
     console.log(commit);
     console.log(author);
-    // const { sha, node_id, commit, author } = userData;
-    // console.log(sha);
-    // console.log(node_id);
-    // console.log(commit);
-    // console.log(author);
 }
 
 // fetch(`https://api.github.com/repos/sebmarkbage/create-react-app/commits?per_page=100`, options)
