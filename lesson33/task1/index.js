@@ -12,7 +12,8 @@ function getTasksList() {
 function getTaskById(taskId) {
     return fetch(baseUrl)
         .then(response => response.json())
-        .then(response => console.log(response.id));
+        .then(response => response.filter(response => { if (response.id === taskId) return true }))
+        .then(result => console.log(result));
 }
 
 // examples
@@ -22,6 +23,6 @@ getTasksList().then(tasksList => {
 });
 // getTasksList();
 
-// getTaskById('2').then(taskData => {
-//     console.log(taskData); // ==> { 'id': '2', 'text': 'District Communications Specialist', 'isDone': false, 'createdDate': 1651499052, 'finishedDate': 1651499052 }
-// });
+getTaskById('2').then(taskData => {
+    console.log(taskData); // ==> { 'id': '2', 'text': 'District Communications Specialist', 'isDone': false, 'createdDate': 1651499052, 'finishedDate': 1651499052 }
+});
