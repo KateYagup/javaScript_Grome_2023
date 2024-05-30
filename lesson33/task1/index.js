@@ -1,37 +1,20 @@
-const daysAgo = num => {
-    const now = new Date();
-    return new Date(now.setDate(now.getDate() - num));
+const baseUrl = `https://5e5cf5eb97d2ea0014796f01.mockapi.io/api/v1/tasks`;
+// const baseUrl1 = `api.github.com/repos/USERID/REPOID/commits?per_page=100`;
+
+function getTasksList() {
+    return fetch(baseUrl)
+        .then(response => response.json());
 }
 
-const getStats = (commitsData, days) => {
-    const targetDate = daysAgo(days);
-    const dayCommitsMap = commitsData
-        .map(
-            ({
-                commit: {
-                    author: { email, date, name },
-                },
-            }) => ({
-                email,
-                date,
-                name,
-            }),
-        )
-        .filter(({ date }) => new Date(date) - targetDate >= 0)
-        .reduce((acc, { email, name }) => {
-            const oldCount = acc[email] ? acc[email].count : 0;
-            return {
-                ...acc,
-                [email]: { name, email, count: oldCount + 1 },
-            };
-        }, {});
-    const authorsArray = Object.values(dayCommitsMap).sort((a, b) => b.count - a.count);
-    const topCount = authorsArray[0].count;
-    return authorsArray.filter(({ count }) => count === topCount);
-};
+function getTaskById(taskId) {
+    // put your code here
+}
 
-export const getMostActiveDevs = ({ days, userId, repoId }) => {
-    return fetch(`https://api.github.com/repos/${userId}/${repoId}/commits?per_page=100`)
-        .then(response => response.json())
-        .then(commitsData => getStats(commitsData, days));
-};
+// examples
+getTasksList().then(tasksList => {
+    console.log(tasksList); // ==> [ {'id':'1', 'isDone':false ... }, {'id':'2', 'isDone':false ... }, ...]
+});
+
+// getTaskById('2').then(taskData => {
+//     console.log(taskData); // ==> { 'id': '2', 'text': 'District Communications Specialist', 'isDone': false, 'createdDate': 1651499052, 'finishedDate': 1651499052 }
+// });
