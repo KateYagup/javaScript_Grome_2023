@@ -30,7 +30,7 @@ const getStats = (commitsData, days) => {
     return authorsArray.filter(({ count }) => count === topCount);
 };
 
-export const getMostActiveDevs = ({ userId, repoId, days }) => {
+export const getMostActiveDevs = ({ days, userId, repoId }) => {
     return fetch(`https://api.github.com/repos/${userId}/${repoId}/commits?per_page=100`)
         .then(response => response.json())
         .then(commitsData => getStats(commitData, days))
