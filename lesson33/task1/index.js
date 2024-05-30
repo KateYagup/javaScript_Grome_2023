@@ -17,12 +17,12 @@ const getStats = (commitsData, days) => {
                 name,
             }),
         )
-        .filter(({ date }) => new Date(date) = targetDate >= 0)
+        .filter(({ date }) => new Date(date) - targetDate >= 0)
         .reduce((acc, { email, name }) => {
             const oldCount = acc[email] ? acc[email].count : 0;
             return {
                 ...acc,
-                [email]: { name, email, count: oldCount + 1 };
+                [email]: { name, email, count: oldCount + 1 },
             };
         }, {});
     const authorsArray = Object.values(dayCommitsMap).sort((a, b) => b.count - a.count);
