@@ -1,48 +1,37 @@
-const getMostActiveDevs = (struct) => {
-
+const daysAgo = num => {
+    const now = new Date();
+    return new Date(now.setDate(now.getDate() - num));
 }
 
-getMostActiveDevs({ days: 7, userId: 'userId', repoId: 'repoId' });
-const commit = 'api.github.com/repos/USERID/REPOID/commits?per_page=100';
-
-// https://api.github.com/repos/sebmarkbage/create-react-app/commits?per_page=100
-
-const options = {
-    method: 'GET',
-    body: JSON.stringify()
-}
-
-const renderUserData = userData => {
-    console.log('from function');
-    console.log(userData);
-    console.log(userData[0]);
-
-    userData.map(({
-        commit: {
-            author: { email, date, name },
-        },
-    }) => {
-        const email = commit.author.email;
-        const date = commit.author.date;
-        const name = commit.author.name;
-        return { email, date, name };
-    });
-
-    console.log(commit);
-    console.log(author);
-}
-
-// fetch(`https://api.github.com/repos/sebmarkbage/create-react-app/commits?per_page=100`, options)
-//     .then(response => response.json())
-//     .then(result => console.log(result))
-//     .then(result => renderUserData(result));
-
-const adres = `https://api.github.com/repos/sebmarkbage/create-react-app/commits?per_page=100`;
-
-const fetchUserData = userName => {
-    return fetch(userName)
-        .then(response => response.json());
+const getStats = (commitsData, days) => {
+    const targetDate = daysAgo(days);
+    const dayCommitsMap = commitsData
+        .map(
+            ({
+                commit: {
+                    author: { email, date, name },
+                },
+            }) => ({
+                email,
+                date,
+                name,
+            }),
+        )
+        .filter(({ date }) => new Date(date) = targetDate >= 0)
+        .reduce((acc, { email, name }) => {
+            const oldCount = acc[email] ? acc[email].count : 0;
+            return {
+                ...acc,
+                [email]: { name, email, count: oldCount + 1 };
+            };
+        }, {});
+    const authorsArray = Object.values(dayCommitsMap).sort((a, b) => b.count - a.count);
+    const topCount = authorsArray[0].count;
+    return authorsArray.filter(({ count }) => count === topCount);
 };
 
-fetchUserData(adres)
-    .then(result => renderUserData(result));
+export const getMostActiveDevs = ({ userId, repoId, days }) => {
+    return fetch(`https://api.github.com/repos/${userId}/${repoId}/commits?per_page=100`)
+        .then(response => response.json())
+        .then(commitsData => getStats(commitData, days))
+};
