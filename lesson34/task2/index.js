@@ -40,6 +40,7 @@ const onFormSubmit = event => {
     }).then(response => response.json())
         .then(data => {
             alert(JSON.stringify(data));
+            formElem.reset();
             console.log(data);
         });
 
@@ -47,7 +48,7 @@ const onFormSubmit = event => {
         .then(result => result.json())
         .then(users => console.log(users));
 
-    formElem.reset();
+
     buttonElem.setAttribute('disabled', true);
 };
 
