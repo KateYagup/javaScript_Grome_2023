@@ -16,27 +16,22 @@ const checkValid = () => {
 
 formElem.addEventListener('input', checkValid);
 
-const saveData = () => {
-    const newData = Object.entries(new FormData(formElem));
-    console.log(newData);
-}
-// buttonElem.addEventListener('click', saveData);
 const onFormSubmit = event => {
     event.preventDefault();
     console.log('onFormSubmit');
     const newData = Object.values(...new FormData(formElem));
     console.log(newData);
-    const nameValue = new FormData(formElem).get('name');
-    const passwordValue = new FormData(formElem).get('password');
-    const emailValue = new FormData(formElem).get('email');
+    const name = new FormData(formElem).get('name');
+    const password = new FormData(formElem).get('password');
+    const email = new FormData(formElem).get('email');
 
     formElem.reset();
     buttonElem.setAttribute('disabled', true);
 
     const newUserData = {
-        nameValue,
-        passwordValue,
-        emailValue,
+        name,
+        password,
+        email,
     }
 
     fetch(baseUrl, {
@@ -45,12 +40,17 @@ const onFormSubmit = event => {
             'Content-Type': 'application/json;charset=utf-8'
         },
         body: JSON.stringify(newUserData)
-    }).then(() => console.log('User created'));
+    }).then(response => response.json())
+        .then(data => {
+            alert(JSON.stringify(data));
+            console.log(data);
+        });
 
     const newDB = fetch(baseUrl)
         .then(result => result.json())
         .then(users => console.log(users));
-}
+};
+
 formElem.addEventListener('submit', onFormSubmit);
 
 // formElem.addEventListener('input', () => (submitElem.disabled = !formElem.reportValidity()));
