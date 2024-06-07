@@ -25,9 +25,6 @@ const onFormSubmit = event => {
     const password = new FormData(formElem).get('password');
     const email = new FormData(formElem).get('email');
 
-    formElem.reset();
-    buttonElem.setAttribute('disabled', true);
-
     const newUserData = {
         name,
         password,
@@ -49,6 +46,9 @@ const onFormSubmit = event => {
     const newDB = fetch(baseUrl)
         .then(result => result.json())
         .then(users => console.log(users));
+
+    formElem.reset();
+    buttonElem.setAttribute('disabled', true);
 };
 
 formElem.addEventListener('submit', onFormSubmit);
