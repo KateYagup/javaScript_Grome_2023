@@ -8,7 +8,6 @@ export function getUsersList() {
 export function getUserById(userId) {
     return fetch(`${baseUrl}/${userId}`)
         .then(result => result.json());
-
 }
 
 export function createUser(userData) {

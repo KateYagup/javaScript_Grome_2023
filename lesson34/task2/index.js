@@ -30,6 +30,9 @@ const onFormSubmit = event => {
     const passwordValue = new FormData(formElem).get('password');
     const emailValue = new FormData(formElem).get('email');
 
+    formElem.reset();
+    buttonElem.setAttribute('disabled', true);
+
     const newUserData = {
         nameValue,
         passwordValue,
@@ -44,11 +47,11 @@ const onFormSubmit = event => {
         body: JSON.stringify(newUserData)
     }).then(() => console.log('User created'));
 
-    fetch(baseUrl)
+    const newDB = fetch(baseUrl)
         .then(result => result.json())
         .then(users => console.log(users));
-
-
 }
-formElem.addEventListener('submit', onFormSubmit)
+formElem.addEventListener('submit', onFormSubmit);
 
+// formElem.addEventListener('input', () => (submitElem.disabled = !formElem.reportValidity()));
+// formElem.addEventListener('input', () => (buttonElems.disabled = !formElem.reportValidity()));
