@@ -1,10 +1,15 @@
 // import { tasks } from './storage.js';
 import { getItem } from "./storage.js";
+import { getTasksList, createTask } from "./tasksGateway.js";
 
 const listElem = document.querySelector('.list');
 
 export const renderTasks = () => {
     const tasksList = getItem('tasksList') || [];
+
+    getTasksList().then(result => console.log(result));
+    // .then(result => console.log(result));
+
     listElem.innerHTML = '';
     const tasksElems = tasksList
         .slice()
