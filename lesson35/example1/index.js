@@ -19,7 +19,7 @@ let productParsingResult;
 
 try {
     // const product = JSON.parse(/* сломанный JSON c данными о продукте */);
-    const product = JSON.parse('{"product":"Tom"}');
+    const product = JSON.parse('{"product":Tom"}');
     console.log('Product data: ', product);
     productParsingResult = 'success';
 } catch (e) {
