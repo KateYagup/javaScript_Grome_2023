@@ -26,6 +26,11 @@ const fetchUserData = userName => {
                 return response.json();
             }
             throw new Error('Failed to load data');
+        })
+        .catch(err => {
+            spinner.classList.remove('spinner_hidden');
+            console.log(err);
+            alert(err.message);
         });
 };
 
