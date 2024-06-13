@@ -7,25 +7,17 @@ const userRepoList = document.querySelector('.repo-list');
 const spinner = document.querySelector('.spinner');
 
 userAvatarElem.setAttribute('src', defaultAvatar);
-spinner.classList.remove('spinner_hidden');
+// userAvatarElem.src = defaultAvatar;
 
-// const ready = () => {
-//     // userAvatarElem.setAttribute('src', defaultAvatar);
-//     // userAvatarElem.src = defaultAvatar;
-//     spinner.classList.remove('spinner_hidden');
-// };
-
-// document.addEventListener('DOMContentLoaded', ready);
-
+spinner.classList.add('spinner_hidden');
 
 const showUserBtnElem = document.querySelector('.name-form__btn');
 const userNameInputElem = document.querySelector('.name-form__input');
 
-
 const fetchUserData = userName => {
     return fetch(`https://api.github.com/users/${userName}`)
         .then(response => {
-            spinner.classList.add('spinner_hidden');
+            spinner.classList.remove('spinner_hidden');
             if (response.status === 200) {
                 return response.json();
             }
@@ -62,6 +54,7 @@ const renderUserData = userData => {
             });
             userRepoList.innerHTML = '';
             userRepoList.append(...nameItems);
+            spinner.classList.add('spinner_hidden');
         });
     // .then(data => {
     //     const { name } = data;
