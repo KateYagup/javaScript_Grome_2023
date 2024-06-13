@@ -42,7 +42,12 @@ const renderUserData = userData => {
     // userRepoList.append(liElem);
     console.log(repos_url);
     const reposUrl = fetch(repos_url)
-        .then(response => response.json())
+        .then(response => {
+            if (response.status === 200) {
+                return response.json();
+            }
+            throw new Error('Failed to load data');
+        })
         .then(result => {
             console.log(result);
             const nameItems = result.map(res => {
