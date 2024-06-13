@@ -24,7 +24,7 @@ const fetchUserData = userName => {
             throw new Error('Failed to load data');
         })
         .catch(err => {
-            spinner.classList.remove('spinner_hidden');
+            spinner.classList.add('spinner_hidden');
             console.log(err);
             alert(err.message);
         });
@@ -55,6 +55,11 @@ const renderUserData = userData => {
             userRepoList.innerHTML = '';
             userRepoList.append(...nameItems);
             spinner.classList.add('spinner_hidden');
+        })
+        .catch(err => {
+            spinner.classList.add('spinner_hidden');
+            console.log(err);
+            alert(err.message);
         });
     // .then(data => {
     //     const { name } = data;
