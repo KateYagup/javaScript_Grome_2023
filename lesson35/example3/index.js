@@ -22,6 +22,7 @@ const userNameInputElem = document.querySelector('.name-form__input');
 const fetchUserData = userName => {
     return fetch(`https://api.github.com/users/${userName}`)
         .then(response => {
+            spinner.classList.add('spinner_hidden');
             if (response.status === 200) {
                 return response.json();
             }
@@ -35,20 +36,48 @@ const fetchUserData = userName => {
 };
 
 const renderUserData = userData => {
-    spinner.classList.add('spinner_hidden');
+    console.log(userData);
     const { avatar_url, name, location, repos_url } = userData;
     userAvatarElem.setAttribute('src', avatar_url);
     userNameElem.textContent = name;
     userLocationElem.textContent = location;
-    const liElem = document.createElement('li');
-    liElem.classList.add('repo-list__item');
-    liElem.textContent = name;
-    userRepoList.append(liElem);
+    // const liElem = document.createElement('li');
+    // liElem.classList.add('repo-list__item');
+    // liElem.textContent = name;
+    // userRepoList.append(liElem);
+    console.log(repos_url);
+    const reposUrl = fetch(repos_url)
+        .then(response => response.json())
+        .then(result => {
+            console.log(result);
+            const nameItems = result.map(res => {
+                const liElem = document.createElement('li');
+                liElem.classList.add('repo-list__item');
+                liElem.textContent = res.name;
+                console.log(res.name);
+                return liElem;
+            });
+            userRepoList.innerHTML = '';
+            userRepoList.append(...nameItems);
+        });
+    // .then(data => {
+    //     const { name } = data;
+    //     return name;
+    // })
+    // console.log(reposUrl);
+
+    // reposUrl.then
+    // const { names } = reposUrl;
+    // console.log(names);
 }
+
 
 const onSearchUser = () => {
     const dataGet = fetchUserData(userNameInputElem.value)
-        .then(userData => renderUserData(userData));
+        .then(userData => {
+            renderUserData(userData);
+            spinner.classList.remove('spinner_hidden');
+        });
     console.log(dataGet);
     // console.log(userNameInputElem.value);
 }

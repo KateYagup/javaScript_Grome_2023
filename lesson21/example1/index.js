@@ -41,12 +41,9 @@ const tasks = [
 
 const renderTasks = tasksList => {
     const listElem = document.querySelector('.list');
-
     const listItemsElems = tasksList.map(itemText => {
         const listItemElem = document.createElement('li');
         listItemElem.classList.add('list__item');
-
-
         const checkboxElem = document.createElement('input');
         checkboxElem.setAttribute('type', 'checkbox');
         // checkboxElem.checked = done;
@@ -55,11 +52,29 @@ const renderTasks = tasksList => {
             listItemElem.classList.add('list__item_done');
             checkboxElem.checked = true;
         }
-
         listItemElem.append(checkboxElem, itemText.text);
         return listItemElem;
     });
     listElem.append(...listItemsElems);
 }
+
+// const renderTasks = tasksList => {
+//     const listElem = document.querySelector('.list');
+//     const listItemsElems = tasksList.map(itemText => {
+//         const listItemElem = document.createElement('li');
+//         listItemElem.classList.add('list__item');
+//         const checkboxElem = document.createElement('input');
+//         checkboxElem.setAttribute('type', 'checkbox');
+//         checkboxElem.classList.add('list__item_done');
+//         if (itemText.done) {
+//             checkboxElem.done = true;
+//             listItemElem.classList.add('list_item__done');
+//         };
+//         console.log(itemText.text);
+//         return listItemElem.append(checkboxElem, itemText.text);
+//     });
+//     listElem.append(...listItemsElems);
+//     // return listElem;
+// }
 
 renderTasks(tasks);
