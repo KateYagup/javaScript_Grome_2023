@@ -6,13 +6,16 @@ const userLocationElem = document.querySelector('.user__location');
 const userRepoList = document.querySelector('.repo-list');
 const spinner = document.querySelector('.spinner');
 
-const ready = () => {
-    userAvatarElem.setAttribute('src', defaultAvatar);
-    // userAvatarElem.src = defaultAvatar;
-    spinner.classList.remove('spinner_hidden');
-};
+userAvatarElem.setAttribute('src', defaultAvatar);
+spinner.classList.remove('spinner_hidden');
 
-document.addEventListener('DOMContentLoaded', ready);
+// const ready = () => {
+//     // userAvatarElem.setAttribute('src', defaultAvatar);
+//     // userAvatarElem.src = defaultAvatar;
+//     spinner.classList.remove('spinner_hidden');
+// };
+
+// document.addEventListener('DOMContentLoaded', ready);
 
 
 const showUserBtnElem = document.querySelector('.name-form__btn');
