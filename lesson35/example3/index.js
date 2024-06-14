@@ -17,7 +17,7 @@ const userNameInputElem = document.querySelector('.name-form__input');
 const fetchUserData = userName => {
     return fetch(`https://api.github.com/users/${userName}`)
         .then(response => {
-            spinner.classList.remove('spinner_hidden');
+            spinner.classList.add('spinner_hidden');
             if (response.status === 200) {
                 return response.json();
             }
@@ -66,12 +66,15 @@ const renderUserData = userData => {
 }
 
 const onSearchUser = () => {
-    // spinner.classList.remove('spinner_hidden');
+    spinner.classList.remove('spinner_hidden');
     const dataGet = fetchUserData(userNameInputElem.value)
         .then(userData => {
-            spinner.classList.remove('spinner_hidden');
+            spinner.classList.add('spinner_hidden');
             renderUserData(userData);
             // spinner.classList.remove('spinner_hidden');
+        })
+        .catch(err => {
+            spinner.classList.add('spinner_hidden');
         });
     console.log(dataGet);
     // console.log(userNameInputElem.value);
