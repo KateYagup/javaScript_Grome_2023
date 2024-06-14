@@ -26,7 +26,8 @@ const fetchUserData = userName => {
         .catch(err => {
             spinner.classList.add('spinner_hidden');
             console.log(err);
-            alert(err.message);
+            // alert(err.message);
+            alert(err);
         });
 };
 
@@ -60,7 +61,8 @@ const renderUserData = userData => {
         .catch(err => {
             spinner.classList.add('spinner_hidden');
             console.log(err);
-            alert(err.message);
+            // alert(err.message);
+            alert(err);
         });
 }
 
