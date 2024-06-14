@@ -35,11 +35,7 @@ const renderUserData = userData => {
     const { avatar_url, name, location, repos_url } = userData;
     userAvatarElem.setAttribute('src', avatar_url);
     userNameElem.textContent = name;
-    userLocationElem.textContent = location;
-    // const liElem = document.createElement('li');
-    // liElem.classList.add('repo-list__item');
-    // liElem.textContent = name;
-    // userRepoList.append(liElem);
+    userLocationElem.textContent = `from ${location}`;
     console.log(repos_url);
     const reposUrl = fetch(repos_url)
         .then(response => {
@@ -66,22 +62,13 @@ const renderUserData = userData => {
             console.log(err);
             alert(err.message);
         });
-    // .then(data => {
-    //     const { name } = data;
-    //     return name;
-    // })
-    // console.log(reposUrl);
-
-    // reposUrl.then
-    // const { names } = reposUrl;
-    // console.log(names);
 }
 
-
 const onSearchUser = () => {
-    spinner.classList.remove('spinner_hidden');
+    // spinner.classList.remove('spinner_hidden');
     const dataGet = fetchUserData(userNameInputElem.value)
         .then(userData => {
+            spinner.classList.remove('spinner_hidden');
             renderUserData(userData);
             // spinner.classList.remove('spinner_hidden');
         });
@@ -93,7 +80,7 @@ showUserBtnElem.addEventListener('click', onSearchUser);
 
 
 
-
+// работать с такими данными
 // https://api.github.com/users/facebook
 // https://api.github.com/users/google
 // https://api.github.com/users/KateYagup
