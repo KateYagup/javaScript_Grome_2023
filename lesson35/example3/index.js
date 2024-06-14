@@ -26,8 +26,8 @@ const fetchUserData = userName => {
         .catch(err => {
             spinner.classList.add('spinner_hidden');
             console.log(err);
-            // alert(err.message);
-            alert(err);
+            alert(err.message);
+            throw err;
         });
 };
 
@@ -61,8 +61,7 @@ const renderUserData = userData => {
         .catch(err => {
             spinner.classList.add('spinner_hidden');
             console.log(err);
-            // alert(err.message);
-            alert(err);
+            alert(err.message);
         });
 }
 
@@ -79,7 +78,9 @@ const onSearchUser = () => {
 }
 
 showUserBtnElem.addEventListener('click', onSearchUser);
-
+window.addEventListener('unhandledrejection', function (e) {
+    spinner.classList.add('spinner_hidden');
+});
 
 
 // работать с такими данными
