@@ -9,7 +9,7 @@ const spinner = document.querySelector('.spinner');
 userAvatarElem.setAttribute('src', defaultAvatar);
 // userAvatarElem.src = defaultAvatar;
 
-spinner.classList.add('spinner_hidden');
+// spinner.classList.add('spinner_hidden');
 
 const showUserBtnElem = document.querySelector('.name-form__btn');
 const userNameInputElem = document.querySelector('.name-form__input');
@@ -79,10 +79,11 @@ const renderUserData = userData => {
 
 
 const onSearchUser = () => {
+    spinner.classList.remove('spinner_hidden');
     const dataGet = fetchUserData(userNameInputElem.value)
         .then(userData => {
             renderUserData(userData);
-            spinner.classList.remove('spinner_hidden');
+            // spinner.classList.remove('spinner_hidden');
         });
     console.log(dataGet);
     // console.log(userNameInputElem.value);
