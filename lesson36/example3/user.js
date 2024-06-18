@@ -1,0 +1,21 @@
+import { renderRepos } from './repos.js';
+
+const userAvatarElem = document.querySelector('.user__avatar');
+const userNameElem = document.querySelector('.user__name');
+const userLocationElem = document.querySelector('.user__location');
+
+export const loadUserData = userData => {
+    const { avatar_url, name, location } = userData;
+
+    userAvatarElem.setAttribute('src', avatar_url);
+    userNameElem.textContent = name;
+    userLocationElem.textContent = `from ${location}`;
+};
+
+export const renderUserData = userData => {
+    console.log(userData);
+    const { avatar_url, name, location } = userData;
+    loadUserData(userData);
+    console.log(userData.repos_url);
+    const reposUrl = fetch(userData.repos_url)
+};
