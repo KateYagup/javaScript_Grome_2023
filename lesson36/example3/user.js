@@ -1,4 +1,3 @@
-import { renderRepos } from './repos.js';
 
 const userAvatarElem = document.querySelector('.user__avatar');
 const userNameElem = document.querySelector('.user__name');
@@ -14,8 +13,6 @@ export const loadUserData = userData => {
 
 export const renderUserData = userData => {
     console.log(userData);
-    const { avatar_url, name, location } = userData;
     loadUserData(userData);
     console.log(userData.repos_url);
-    const reposUrl = fetch(userData.repos_url)
 };
