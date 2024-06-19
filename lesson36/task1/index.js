@@ -1,11 +1,11 @@
-// /**
-//  * @param {string[]} users
-//  * @return {promise}
-//  */
+/**
+ * @param {string[]} users
+ * @return {promise}
+ */
 
 
 
-const getUsersBlogs = async users => {
+export const getUsersBlogs = async users => {
     let usersUrl = [];
     for (let user of users) {
         const response = await fetch(`https://api.github.com/users/${user}`);
