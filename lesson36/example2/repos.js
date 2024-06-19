@@ -1,5 +1,4 @@
 const userRepoList = document.querySelector('.repo-list');
-const spinner = document.querySelector('.spinner');
 
 export const renderRepos = reposList => {
     const nameItems = reposList.map(res => {
