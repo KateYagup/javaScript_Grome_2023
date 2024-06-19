@@ -8,7 +8,9 @@ export const loadUserData = userData => {
 
     userAvatarElem.setAttribute('src', avatar_url);
     userNameElem.textContent = name;
-    userLocationElem.textContent = `from ${location}`;
+    userLocationElem.textContent = location
+        ? `from ${location}`
+        : '';
 };
 
 export const renderUserData = userData => {
