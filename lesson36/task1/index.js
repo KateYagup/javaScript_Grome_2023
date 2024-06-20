@@ -5,18 +5,17 @@
 
 
 export const getUsersBlogs = async users => {
-    const usersUrl = await users.map(user => {
-        const result = fetch(`https://api.github.com/users/${user}`)
-            .then(response => response.json())
-            .then(res => res.blog);
-        return result;
-    });
-    // console.log(usersUrl);
     try {
+        const usersUrl = await users.map(user => {
+            const result = fetch(`https://api.github.com/users/${user}`)
+                .then(response => response.json())
+                .then(res => res.blog);
+            return result;
+        });
         Promise.all(usersUrl).then(res => console.log(res)).catch(err => console.log(err));
         return usersUrl;
     } catch {
-        return null;
+        throw new Error('Can\'t read data');
     }
 };
 
