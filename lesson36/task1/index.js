@@ -13,7 +13,7 @@ export const getUsersBlogs = async users => {
         });
         Promise.all(usersUrl).then(res => console.log(res)).catch(err => console.log(err));
         return usersUrl;
-    } catch {
+    } catch (err) {
         throw new Error('Can\'t read data');
     }
 };
