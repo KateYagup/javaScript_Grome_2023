@@ -1,31 +1,25 @@
-/**
- * @param {string[]} users
- * @return {promise}
- */
+// /**
+//  * @param {string[]} users
+//  * @return {promise}
+//  */
 
 
-
-export const getUsersBlogs = async users => {
-    let usersUrl = [];
-    for (let user of users) {
-        const response = await fetch(`https://api.github.com/users/${user}`);
-        const result = await response.json();
-        usersUrl.push(result.blog);
+const getUsersBlogs = async users => {
+    const usersUrl = await users.map(user => {
+        const result = fetch(`https://api.github.com/users/${user}`)
+            .then(response => response.json())
+            .then(res => res.blog);
+        return result;
+    });
+    // console.log(usersUrl);
+    try {
+        Promise.all(usersUrl).then(res => console.log(res)).catch(err => console.log(err));
+        return usersUrl;
+    } catch {
+        return null;
     }
-    // const usersUrl = users.reduce((acc, user) => {
-    //     return acc.concat(fetch(`https://api.github.com/users/${user}`));
-    // }, []);
-
-    // const usersUrl = users.reduce((acc, user) => {
-    //     const info = fetch(`https://api.github.com/users/${user}`);
-    //     const infoJson = info.json();
-    //     return acc.concat(infoJson.blog);
-    // }, []);
-
-    return usersUrl;
-
 };
 
 // examples
-// getUsersBlogs(['google', 'facebook', 'reactjs']).then(linksList => console.log(linksList)); // ==> ["https://opensource.google/", "https://opensource.fb.com", "https://reactjs.org"]
-// getUsersBlogs(['microsoft']).then(linksList => console.log(linksList)); // ==> ["https://opensource.microsoft.com"]
+getUsersBlogs(['google', 'facebook', 'reactjs']).then(linksList => console.log(linksList)); // ==> ["https://opensource.google/", "https://opensource.fb.com", "https://reactjs.org"]
+getUsersBlogs(['microsoft']).then(linksList => console.log(linksList)); // ==> ["https://opensource.microsoft.com"]
