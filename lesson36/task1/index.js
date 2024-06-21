@@ -11,7 +11,7 @@ export const getUsersBlogs = async users => {
                     .then(response => response.json())
                     .then(res => res.blog);
             })
-        ).catch(err => console.log(err));
+        )
     } catch (err) {
         throw new Error('Can\'t read data');
     }
